@@ -36,6 +36,7 @@ export const calculateLinks = (links: { start: number; end: number }[]): Resourc
     };
 };
 
+// Revoir formule maxLevel
 export const calculateMaxLevel = (
     resType: keyof ResourceTotals,
     startLevel: number,
@@ -46,7 +47,7 @@ export const calculateMaxLevel = (
     let maxLevel = startLevel;
 
     while (data[maxLevel] !== undefined && stock >= data[maxLevel]) {
-        stock -= data[maxLevel];
+        stock -= data[maxLevel] * 5;
         maxLevel++;
     }
 
