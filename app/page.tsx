@@ -8,17 +8,17 @@ import Navigation from '@/components/Navigation';
 import LinksView from '@/components/LinksView';
 import DashboardView from '@/components/DashboardView';
 import WelcomeScreen from '@/components/WelcomeScreen';
+import { useLocalStorage } from '@/helpers/useLocalStorage';
 
-// 1. Le contenu de l'application
 function MainAppContent() {
   const { t } = useLanguage();
   const [view, setView] = useState<'home' | 'app'>('home');
   const [activeTab, setActiveTab] = useState<'links' | 'dash'>('links');
-  
-  const [links, setLinks] = useState(Array(5).fill({ start: 1600, end: 1700 }));
-  const [needs, setNeeds] = useState<ResourceTotals>({ xp: 0, shinzu: 0, gold: 0 });
-  const [already, setAlready] = useState<ResourceTotals>({ xp: 0, shinzu: 0, gold: 0 });
-  const [gains, setGains] = useState<AllGains>({
+
+  const [links, setLinks] = useLocalStorage('calculette_links', Array(5).fill({ start: 1600, end: 1700 }));
+  const [needs, setNeeds] = useLocalStorage<ResourceTotals>('calculette_needs', { xp: 0, shinzu: 0, gold: 0 });
+  const [already, setAlready] = useLocalStorage<ResourceTotals>('calculette_already', { xp: 0, shinzu: 0, gold: 0 });
+  const [gains, setGains] = useLocalStorage<AllGains>('calculette_gains', {
     xp: { val: 52894000, unit: 1 },
     shinzu: { val: 448, unit: 1 },
     gold: { val: 120000, unit: 1 }
@@ -27,6 +27,7 @@ function MainAppContent() {
   const calculateAndGo = async () => {
     const data = await calculateLinks(links);
     setNeeds(data);
+    localStorage.setItem('calculette_needs', JSON.stringify(data));
     setActiveTab('dash');
   };
 
@@ -88,15 +89,9 @@ function MainAppContent() {
   );
 }
 
-// 2. L'export final avec protection contre le crash de contexte
 export default function Home() {
   const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
+  useEffect(() => { setMounted(true); }, []);
   if (!mounted) return <div className="min-h-screen bg-black" />;
-
   return <MainAppContent />;
 }
