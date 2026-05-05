@@ -1,0 +1,44 @@
+{
+  "app": {
+    "title": "FARMCORE",
+    "back_home": "Retour au menu principal"
+  },
+  "tabs": {
+    "links": "Liens",
+    "dash": "Dashboard"
+  },
+  "welcome": {
+    "farm": "FARM",
+    "core": "CORE",
+    "tagline": "Tower of God • Optimization Suite",
+    "links_title": "Calcul des liens",
+    "links_desc": "Prévoyez vos ressources pour les prochains paliers de liens de divinité.",
+    "footer": "Zheneos Systems • 2026"
+  },
+  "navigation": {
+    "links": "1. Liens",
+    "dashboard": "2. Dashboard"
+  },
+  "links_view": {
+    "calculate_dashboard": "Calculer & Voir le Dashboard",
+    "skip": "Sauter"
+  },
+  "link_row": {
+    "link_label": "LINK {{index}}"
+  },
+  "dashboard_view": {
+    "max_level": "MAX: Lvl {{maxLevel}}",
+    "start_level": "Start: {{startLevel}}",
+    "total_needed": "Besoin Total",
+    "input_placeholder": "0",
+    "hours_format": "≈ {{hours}} Heures",
+    "current_stock": "Stock Actuel",
+    "unit": "Unité",
+    "per_hour": "/ 1h",
+    "per_24_hours": "/ 24h",
+    "gain": "Gain",
+    "hours": "h",
+    "days_hours": "h24",
+    "add": "+"
+  }
+}
