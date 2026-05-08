@@ -15,6 +15,23 @@
     "links_desc": "Plan your resources for upcoming divinity link tiers.",
     "footer": "Zheneos Systems • 2026"
   },
+  "auth": {
+    "button": "Login",
+    "title": "Login / Register",
+    "subtitle": "Sign in or create an account quickly.",
+    "login_tab": "Login",
+    "register_tab": "Register",
+    "pseudo": "Username",
+    "login_label": "Login",
+    "password": "Password",
+    "submit": "Submit",
+    "loading": "Please wait...",
+    "success_register": "Registration successful, you can now log in.",
+    "success_login": "Login successful.",
+    "switch_to_register": "No account? Register now.",
+    "switch_to_login": "Already registered? Log in.",
+    "error": "An error occurred. Please verify your details."
+  },
   "navigation": {
     "links": "1. Links",
     "dashboard": "2. Dashboard"

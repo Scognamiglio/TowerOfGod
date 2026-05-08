@@ -141,8 +141,24 @@ export default function DashboardView({
 
               {/* ESTIMATION TEMPS */}
               <div className="text-[11px] font-bold text-center bg-slate-950/60 py-3 rounded-xl border border-slate-800/50">
-                <span className="text-white text-sm">{totalHours.toLocaleString()} {t('dashboard_view.hours')}</span>
-                <div className="text-[9px] text-slate-500 uppercase mt-1">Temps restant estimé</div>
+                <div className="text-white text-sm">
+                  {/* Affichage du total */}
+                  {totalHours.toLocaleString()} h 
+                  
+                  <span className="ml-1 font-normal text-slate-400">
+                    ( 
+                    {Math.floor(totalHours / 24).toLocaleString()}
+                    <span className="text-blue-400">x24h</span> 
+                    {" + "}
+                    {Math.round(totalHours % 24)}
+                    <span className="text-emerald-400">x1h</span>
+                    )
+                  </span>
+                </div>
+                
+                <div className="text-[9px] text-slate-500 uppercase mt-1">
+                  Temps restant estimé
+                </div>
               </div>
 
               {/* GAINS */}

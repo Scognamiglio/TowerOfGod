@@ -15,6 +15,23 @@
     "links_desc": "Prévoyez vos ressources pour les prochains paliers de liens de divinité.",
     "footer": "Zheneos Systems • 2026"
   },
+  "auth": {
+    "button": "Connexion",
+    "title": "Connexion / Inscription",
+    "subtitle": "Connectez-vous ou créez un compte rapidement.",
+    "login_tab": "Connexion",
+    "register_tab": "Inscription",
+    "pseudo": "Pseudo",
+    "login_label": "Login",
+    "password": "Mot de passe",
+    "submit": "Envoyer",
+    "loading": "Patientez...",
+    "success_register": "Inscription réussie, vous pouvez maintenant vous connecter.",
+    "success_login": "Connexion réussie.",
+    "switch_to_register": "Pas de compte ? Inscrivez-vous.",
+    "switch_to_login": "Déjà inscrit ? Connectez-vous.",
+    "error": "Une erreur est survenue. Vérifiez vos informations."
+  },
   "navigation": {
     "links": "1. Liens",
     "dashboard": "2. Dashboard"

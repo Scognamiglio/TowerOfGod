@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import LanguageSelector from '@/components/LanguageSelector';
+import AuthModal from '@/components/AuthModal';
 
 interface Props {
   onEnter: () => void;
@@ -7,12 +9,20 @@ interface Props {
 
 export default function WelcomeScreen({ onEnter }: Props) {
   const { t } = useLanguage();
+  const [authOpen, setAuthOpen] = useState(false);
   
   return (
-    <div className="min-h-screen bg-black flex flex-col items-center justify-center p-6 text-center">
-      {/* Positionnement du sélecteur en haut */}
-      <div className="absolute top-8">
+    <div className="min-h-screen bg-black flex flex-col items-center justify-center p-6 text-center relative">
+      <div className="absolute left-8 top-8">
         <LanguageSelector />
+      </div>
+      <div className="absolute right-8 top-8">
+        <button
+          onClick={() => setAuthOpen(true)}
+          className="rounded-3xl border border-slate-800 bg-slate-900/90 px-5 py-3 text-sm font-black uppercase tracking-[0.2em] text-slate-100 transition hover:border-indigo-500/50 hover:text-indigo-300"
+        >
+          {t('auth.button')}
+        </button>
       </div>
 
       <div className="space-y-2 mb-12">
@@ -39,6 +49,8 @@ export default function WelcomeScreen({ onEnter }: Props) {
       <footer className="mt-20 text-[10px] text-slate-700 font-mono uppercase tracking-widest">
         {t('welcome.footer')}
       </footer>
+
+      <AuthModal visible={authOpen} onClose={() => setAuthOpen(false)} />
     </div>
   );
 }
