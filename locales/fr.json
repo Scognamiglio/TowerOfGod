@@ -13,10 +13,27 @@
     "tagline": "Tower of God • Optimization Suite",
     "links_title": "Calcul des liens",
     "links_desc": "Prévoyez vos ressources pour les prochains paliers de liens de divinité.",
+    "guild_title": "Guilde",
+    "guild_desc": "Gérez votre guilde et collaborez avec vos membres.",
+    "guild_no_guild_title": "Aucune Guilde",
+    "guild_no_guild_desc": "Vous n'avez pas encore de guilde.",
+    "guild_create": "Créer une guilde",
+    "guild_join": "Rejoindre une guilde",
     "footer": "Zheneos Systems • 2026"
+  },
+  "guild_modal": {
+    "title": "Demander à rejoindre une guilde",
+    "search": "Rechercher par nom...",
+    "leader": "Chef",
+    "join": "Rejoindre",
+    "no_guilds": "Aucune guilde trouvée.",
+    "create_title": "Créer une guilde",
+    "guild_name_placeholder": "Nom de la guilde...",
+    "save": "Enregistrer"
   },
   "auth": {
     "button": "Connexion",
+    "logout": "Se déconnecter",
     "title": "Connexion / Inscription",
     "subtitle": "Connectez-vous ou créez un compte rapidement.",
     "login_tab": "Connexion",
@@ -57,5 +74,9 @@
     "hours": "h",
     "days_hours": "h24",
     "add": "+"
+  },
+  "flash": {
+    "request_sent": "Demande enregistrée",
+    "guild_created": "Guilde créée"
   }
 }

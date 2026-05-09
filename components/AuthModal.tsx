@@ -7,11 +7,12 @@ import AuthService from '@/lib/authService';
 interface AuthModalProps {
   visible: boolean;
   onClose: () => void;
+  onLoginSuccess?: () => void;
 }
 
 type Mode = 'login' | 'register';
 
-export default function AuthModal({ visible, onClose }: AuthModalProps) {
+export default function AuthModal({ visible, onClose, onLoginSuccess }: AuthModalProps) {
   const { t } = useLanguage();
   const [mode, setMode] = useState<Mode>('login');
   const [pseudo, setPseudo] = useState('');
@@ -35,12 +36,19 @@ export default function AuthModal({ visible, onClose }: AuthModalProps) {
         : await AuthService.register(pseudo, login, password);
 
       if (mode === 'register') {
-        setMessage(t('auth.success_register'));
-        setMode('login');
+        setMessage(t('auth.success_register')); // Optionally keep this message for a moment
+        // After successful registration, automatically log in the user
+        const loginResponse = await AuthService.login(login, password);
+        localStorage.setItem('farmcore_token', loginResponse.data.access_token);
+        localStorage.setItem('farmcore_user', JSON.stringify(loginResponse.data.user));
+        if (onLoginSuccess) onLoginSuccess();
+        onClose();
       } else {
         setMessage(t('auth.success_login'));
         localStorage.setItem('farmcore_token', response.data.access_token);
         localStorage.setItem('farmcore_user', JSON.stringify(response.data.user));
+        if (onLoginSuccess) onLoginSuccess();
+        onClose();
       }
     } catch (err: unknown) {
       const axiosError = err as { response?: { data?: { message?: string } } };
