@@ -13,6 +13,12 @@
     "tagline": "Tower of God • Optimization Suite",
     "links_title": "Link-Rechner",
     "links_desc": "Planen Sie Ihre Ressourcen für kommende Göttlichkeitslink-Stufen.",
+    "guild_title": "Gilde",
+    "guild_desc": "Verwalte deine Gilde und arbeite mit deinen Mitgliedern zusammen.",
+    "guild_no_guild_title": "Keine Gilde",
+    "guild_no_guild_desc": "Du bist noch in keiner Gilde.",
+    "guild_create": "Gilde erstellen",
+    "guild_join": "Gilde beitreten",
     "footer": "Zheneos Systems • 2026"
   },
   "navigation": {
@@ -25,6 +31,51 @@
   },
   "link_row": {
     "link_label": "LINK {{index}}"
+  },
+  "api": {
+    "TARGET_NOT_IN_GUILD": "Ziel ist nicht in der Gilde.",
+    "GUILD_NOT_FOUND": "Gilde nicht gefunden.",
+    "ONLY_LEADER_CAN_DO_THIS": "Nur der Anführer kann dies tun.",
+    "NOT_ENOUGH_RIGHTS": "Nicht genügend Rechte.",
+    "LEADER_NOT_FOUND": "Anführer nicht gefunden.",
+    "LEADER_ALREADY_IN_GUILD": "Anführer ist bereits in einer Gilde.",
+    "USER_NOT_IN_GUILD": "Benutzer ist nicht in der Gilde.",
+    "USER_NOT_FOUND": "Benutzer nicht gefunden.",
+    "USER_ALREADY_IN_GUILD": "Benutzer ist bereits in einer Gilde.",
+    "LEADER_CANNOT_LEAVE": "Der Anführer kann die Gilde nicht verlassen. Übertragen Sie zuerst die Führung.",
+    "PLAYER_NOT_PENDING": "Spieler ist nicht ausstehend.",
+    "PLAYER_ACCEPTED": "Spieler akzeptiert.",
+    "PLAYER_REFUSED": "Spieler abgelehnt.",
+    "ALREADY_LEADER": "Bereits Anführer.",
+    "CANNOT_EXCLUDE_LEADER": "Der Anführer kann nicht ausgeschlossen werden.",
+    "ADMIN_CANNOT_EXCLUDE_ADMIN": "Ein Admin kann keinen anderen Admin ausschließen.",
+    "PLAYER_EXCLUDED": "Spieler ausgeschlossen."
+  },
+  "guild_page": {
+    "confirm_transfer_lead": "Sind Sie sicher, dass Sie die Rolle des Anführers an {{pseudo}} übertragen möchten? Sie werden diesen Status verlieren.",
+    "role_change_error": "Fehler beim Ändern der Rolle",
+    "confirm_leave": "Sind Sie sicher, dass Sie die Gilde verlassen möchten?",
+    "leave_error": "Fehler beim Verlassen der Gilde",
+    "request_process_error": "Fehler bei der Bearbeitung der Anfrage",
+    "confirm_kick": "Sind Sie sicher, dass Sie {{pseudo}} aus der Gilde ausschließen möchten?",
+    "rank_leader": "Anführer",
+    "rank_admin": "Admin",
+    "rank_member": "Mitglied",
+    "back": "Zurück",
+    "leave_guild": "Gilde verlassen",
+    "view_players": "Spieler ansehen",
+    "view_players_desc": "Sehen Sie sich die Liste der Gildenmitglieder an.",
+    "view_requests": "Anfragen ansehen",
+    "view_requests_desc": "Anfragen zum Beitritt zur Gilde verwalten.",
+    "members_title": "Gildenmitglieder",
+    "loading_members": "Mitglieder werden geladen...",
+    "no_members": "Keine Mitglieder gefunden.",
+    "kick_member": "Mitglied ausschließen",
+    "pending_requests": "Ausstehende Anfragen",
+    "loading": "Wird geladen...",
+    "no_requests": "Zurzeit keine Anfragen.",
+    "refuse": "Ablehnen",
+    "accept": "Akzeptieren"
   },
   "dashboard_view": {
     "max_level": "MAX: Lvl {{maxLevel}}",
@@ -39,6 +90,44 @@
     "gain": "Gewinn",
     "hours": "h",
     "days_hours": "h24",
-    "add": "+"
+    "add": "+",
+    "estimated_time": "Geschätzte verbleibende Zeit"
+  },
+  "flash": {
+    "request_sent": "Anfrage gesendet",
+    "guild_created": "Gilde erstellt"
+  },
+  "guild_modal": {
+    "title": "Anfrage zum Beitritt zu einer Gilde",
+    "search": "Nach Namen suchen...",
+    "leader": "Anführer",
+    "join": "Beitreten",
+    "no_guilds": "Keine Gilden gefunden.",
+    "create_title": "Eine Gilde erstellen",
+    "guild_name_placeholder": "Gildenname...",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "join_error": "Fehler beim Beitreten",
+    "loading": "Wird geladen...",
+    "prev": "← ZURÜCK",
+    "next": "WEITER →"
+  },
+  "helper_modal": {
+    "button_title": "Wie man richtig ausfüllt?",
+    "button_text": "Wie man den Rechner richtig ausfüllt",
+    "modal_title": "Wie man richtig ausfüllt",
+    "general_instructions": "Allgemeine Anweisungen:",
+    "go_to": "Gehe zu",
+    "shinzu_link": "shinzu link",
+    "use_amplification": "Verstärkungsgegenstände verwenden",
+    "for_gain": "Für den Gewinn:",
+    "img_alt_gain": "Gewinnbeispiel",
+    "select": "Wählen Sie",
+    "one_time_24h": "1 Mal 24h",
+    "for_each_resource": "für jede Ressource",
+    "for_stock": "Für den Bestand:",
+    "img_alt_stock": "Bestandsbeispiel",
+    "all_plus": "All+",
+    "no_commas_warning": "Setzen Sie die im Spiel gesehenen Kommas nicht auf der Website"
   }
 }

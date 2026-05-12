@@ -60,7 +60,7 @@ export default function JoinGuildModal({ visible, onClose, onJoined }: JoinGuild
       onJoined();
       onClose();
     } catch (err) {
-      alert("Erreur lors de l'adhésion");
+      alert(t('guild_modal.join_error'));
     }
   };
 
@@ -86,7 +86,7 @@ export default function JoinGuildModal({ visible, onClose, onJoined }: JoinGuild
 
         <div className="space-y-4 min-h-[360px]">
           {loading ? (
-             <div className="flex items-center justify-center h-48 text-slate-500 uppercase text-xs font-black tracking-[0.3em] animate-pulse">Chargement...</div>
+             <div className="flex items-center justify-center h-48 text-slate-500 uppercase text-xs font-black tracking-[0.3em] animate-pulse">{t('guild_modal.loading')}</div>
           ) : guilds.length > 0 ? (
             guilds.map(guild => (
               <div key={guild._id} className="group flex items-center justify-between p-5 bg-slate-900/40 border border-slate-800 rounded-3xl hover:border-indigo-500/50 hover:bg-slate-900/60 transition-all">
@@ -113,9 +113,9 @@ export default function JoinGuildModal({ visible, onClose, onJoined }: JoinGuild
 
         {lastPage > 1 && (
           <div className="mt-8 flex items-center justify-center gap-6">
-            <button disabled={page <= 1} onClick={() => setPage(p => p - 1)} className="p-2 text-slate-500 hover:text-indigo-400 disabled:opacity-10 transition-colors font-black">← PREV</button>
+            <button disabled={page <= 1} onClick={() => setPage(p => p - 1)} className="p-2 text-slate-500 hover:text-indigo-400 disabled:opacity-10 transition-colors font-black">{t('guild_modal.prev')}</button>
             <span className="text-[10px] font-black text-slate-600 uppercase bg-slate-900 px-3 py-1 rounded-full border border-slate-800">{page} / {lastPage}</span>
-            <button disabled={page >= lastPage} onClick={() => setPage(p => p + 1)} className="p-2 text-slate-500 hover:text-indigo-400 disabled:opacity-10 transition-colors font-black">NEXT →</button>
+            <button disabled={page >= lastPage} onClick={() => setPage(p => p + 1)} className="p-2 text-slate-500 hover:text-indigo-400 disabled:opacity-10 transition-colors font-black">{t('guild_modal.next')}</button>
           </div>
         )}
       </div>

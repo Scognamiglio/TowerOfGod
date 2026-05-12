@@ -13,19 +13,72 @@ const getAuthHeader = () => {
   return {};
 };
 
+const apiClient = axios.create({
+  baseURL: API_URL,
+});
+
+apiClient.interceptors.request.use((config) => {
+  const headers = getAuthHeader();
+  if (headers.Authorization) {
+    config.headers.Authorization = headers.Authorization;
+  }
+  return config;
+});
+
+apiClient.interceptors.response.use(
+  (response) => {
+    // Si la requête a réussi et ce n'est pas un GET
+    if (response.config.method?.toLowerCase() !== 'get') {
+      const messageKey = response.data?.message;
+      if (messageKey && typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('app-flash-message', { detail: { key: messageKey, type: 'success' } }));
+      }
+    }
+    return response;
+  },
+  (error) => {
+    // Dans tous les cas d'erreur (y compris GET) on peut envoyer un message d'erreur
+    const messageKey = error.response?.data?.message || 'flash.error';
+    if (messageKey && typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('app-flash-message', { detail: { key: messageKey, type: 'error' } }));
+    }
+    return Promise.reject(error);
+  }
+);
+
 const GuildService = {
   getGuilds: (page = 1, limit = 5) => 
-    axios.get(`${API_URL}guilds/`, { params: { page, limit }, headers: getAuthHeader() }),
+    apiClient.get(`guilds/`, { params: { page, limit } }),
 
   searchGuilds: (name: string, page = 1, limit = 5) => 
-    axios.get(`${API_URL}guilds/search`, { params: { name, page, limit }, headers: getAuthHeader() }),
+    apiClient.get(`guilds/search`, { params: { name, page, limit } }),
 
   joinGuild: (guildId: string) => 
-    // For POST requests, the data/body comes before the config object
-    axios.post(`${API_URL}guilds/join/${guildId}`, {}, { headers: getAuthHeader() }),
+    apiClient.post(`guilds/join/${guildId}`),
 
   createGuild: (name: string) =>
-    axios.post(`${API_URL}guilds/create`, { name }, { headers: getAuthHeader() })
+    apiClient.post(`guilds/create`, { name }),
+
+  getGuildMembers: () =>
+    apiClient.get(`guilds/members`),
+
+  updateMemberRole: (targetId: string, role: string) =>
+    apiClient.patch(`guilds/role`, { targetId, role }),
+
+  transferLeadership: (newLeaderId: string) =>
+    apiClient.patch(`guilds/transfer-lead`, { newLeaderId }),
+
+  leaveGuild: () =>
+    apiClient.delete(`guilds/leave`),
+
+  getGuildRequests: () =>
+    apiClient.get(`guilds/requests`),
+
+  handleGuildRequest: (targetId: string, act: 'accepted' | 'refused') =>
+    apiClient.post(`guilds/accept`, { targetId, act }),
+
+  kickMember: (idUser: string) =>
+    apiClient.delete(`guilds/kick/${idUser}`)
 };
 
 export default GuildService;

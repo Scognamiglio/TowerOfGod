@@ -29,7 +29,12 @@
     "no_guilds": "Aucune guilde trouvée.",
     "create_title": "Créer une guilde",
     "guild_name_placeholder": "Nom de la guilde...",
-    "save": "Enregistrer"
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "join_error": "Erreur lors de l'adhésion",
+    "loading": "Chargement...",
+    "prev": "← PREV",
+    "next": "NEXT →"
   },
   "auth": {
     "button": "Connexion",
@@ -60,6 +65,51 @@
   "link_row": {
     "link_label": "LINK {{index}}"
   },
+  "api": {
+    "TARGET_NOT_IN_GUILD": "La cible n'est pas dans la guilde.",
+    "GUILD_NOT_FOUND": "Guilde introuvable.",
+    "ONLY_LEADER_CAN_DO_THIS": "Seul le leader peut faire cela.",
+    "NOT_ENOUGH_RIGHTS": "Droits insuffisants.",
+    "LEADER_NOT_FOUND": "Leader introuvable.",
+    "LEADER_ALREADY_IN_GUILD": "Le leader est déjà dans une guilde.",
+    "USER_NOT_IN_GUILD": "L'utilisateur n'est pas dans la guilde.",
+    "USER_NOT_FOUND": "Utilisateur introuvable.",
+    "USER_ALREADY_IN_GUILD": "L'utilisateur est déjà dans une guilde.",
+    "LEADER_CANNOT_LEAVE": "Le leader ne peut pas quitter la guilde. Transférez le lead d'abord.",
+    "PLAYER_NOT_PENDING": "Le joueur n'est pas en attente.",
+    "PLAYER_ACCEPTED": "Joueur accepté.",
+    "PLAYER_REFUSED": "Joueur refusé.",
+    "ALREADY_LEADER": "Déjà leader.",
+    "CANNOT_EXCLUDE_LEADER": "Impossible d'exclure le leader.",
+    "ADMIN_CANNOT_EXCLUDE_ADMIN": "Un admin ne peut pas exclure un autre admin.",
+    "PLAYER_EXCLUDED": "Joueur exclu."
+  },
+  "guild_page": {
+    "confirm_transfer_lead": "Êtes-vous sûr de vouloir transférer le rôle de leader à {{pseudo}} ? Vous perdrez ce statut.",
+    "role_change_error": "Erreur lors du changement de rôle",
+    "confirm_leave": "Êtes-vous sûr de vouloir quitter la guilde ?",
+    "leave_error": "Erreur lors du départ de la guilde",
+    "request_process_error": "Erreur lors du traitement de la demande",
+    "confirm_kick": "Êtes-vous sûr de vouloir exclure {{pseudo}} de la guilde ?",
+    "rank_leader": "Leader",
+    "rank_admin": "Admin",
+    "rank_member": "Membre",
+    "back": "Retour",
+    "leave_guild": "Quitter la guilde",
+    "view_players": "Voir les joueurs",
+    "view_players_desc": "Consulter la liste des membres de la guilde.",
+    "view_requests": "Voir les demandes",
+    "view_requests_desc": "Gérer les demandes pour rejoindre la guilde.",
+    "members_title": "Membres de la guilde",
+    "loading_members": "Chargement des membres...",
+    "no_members": "Aucun membre trouvé.",
+    "kick_member": "Exclure le membre",
+    "pending_requests": "Demandes en attente",
+    "loading": "Chargement...",
+    "no_requests": "Aucune demande pour le moment.",
+    "refuse": "Refuser",
+    "accept": "Accepter"
+  },
   "dashboard_view": {
     "max_level": "MAX: Lvl {{maxLevel}}",
     "start_level": "Start: {{startLevel}}",
@@ -73,10 +123,29 @@
     "gain": "Gain",
     "hours": "h",
     "days_hours": "h24",
-    "add": "+"
+    "add": "+",
+    "estimated_time": "Temps restant estimé"
   },
   "flash": {
     "request_sent": "Demande enregistrée",
     "guild_created": "Guilde créée"
+  },
+  "helper_modal": {
+    "button_title": "Comment bien remplir ?",
+    "button_text": "Comment bien remplir la calculette",
+    "modal_title": "Comment correctement remplir",
+    "general_instructions": "Instructions générales :",
+    "go_to": "Aller dans",
+    "shinzu_link": "shinzu link",
+    "use_amplification": "Utiliser des items d'amplification",
+    "for_gain": "Pour le gain :",
+    "img_alt_gain": "Exemple Gain",
+    "select": "Sélectionnez",
+    "one_time_24h": "1 fois 24h",
+    "for_each_resource": "pour chaque ressource",
+    "for_stock": "Pour le stock :",
+    "img_alt_stock": "Exemple Stock",
+    "all_plus": "All+",
+    "no_commas_warning": "Ne pas mettre les virgules vues en jeu sur le site"
   }
 }

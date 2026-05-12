@@ -59,14 +59,14 @@ export default function CreateGuildModal({ isOpen, onClose, onSuccess }: CreateG
 
             <div className="flex justify-end gap-3">
               <button onClick={onClose} className="px-4 py-2 text-slate-400 hover:text-white transition-colors">
-                Annuler
+                {t('guild_modal.cancel')}
               </button>
               <button
                 onClick={handleSave}
                 disabled={loading || !guildName.trim()}
                 className="bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white px-6 py-2 rounded-lg font-semibold transition-all"
               >
-                {loading ? '...' : t('guild_modal.save')}
+                {loading ? t('guild_modal.loading') : t('guild_modal.save')}
               </button>
             </div>
           </div>

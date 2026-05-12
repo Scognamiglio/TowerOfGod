@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import { useLanguage } from '@/context/LanguageContext';
 import LanguageSelector from '@/components/LanguageSelector';
 import AuthModal from '@/components/AuthModal';
@@ -27,6 +28,7 @@ export default function WelcomeScreen({ onEnter }: Props) {
   const [joinModalOpen, setJoinModalOpen] = useState(false);
   const [createModalOpen, setCreateModalOpen] = useState(false);
   const [flash, setFlash] = useState<string | null>(null);
+  const router = useRouter();
 
   const checkLoginStatus = useCallback(() => {
     const token = localStorage.getItem('farmcore_token');
@@ -58,7 +60,7 @@ export default function WelcomeScreen({ onEnter }: Props) {
       setAuthOpen(true);
     }
   };
-  
+
   return (
     <div className="min-h-screen bg-black flex flex-col items-center justify-center p-6 text-center relative">
       {flash && <FlashMessage message={flash} onClose={() => setFlash(null)} />}
@@ -85,7 +87,7 @@ export default function WelcomeScreen({ onEnter }: Props) {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl w-full">
-        <button 
+        <button
           onClick={onEnter}
           className="group relative bg-slate-900 border border-slate-800 p-8 rounded-3xl transition-all hover:border-indigo-500/50 hover:bg-slate-900/50 text-left"
         >
@@ -96,16 +98,22 @@ export default function WelcomeScreen({ onEnter }: Props) {
         </button>
 
         {isLoggedIn && (
-          <button 
-            onClick={() => setShowGuildOptions(!showGuildOptions)}
+          <button
+            onClick={() => {
+              if (user?.guildName) {
+                router.push('/guilde');
+              } else {
+                setShowGuildOptions(!showGuildOptions);
+              }
+            }}
             className="group relative bg-slate-900 border border-slate-800 p-8 rounded-3xl transition-all hover:border-emerald-500/50 hover:bg-slate-900/50 text-left"
           >
             <h2 className="text-xl font-bold text-white mb-2 group-hover:text-emerald-400">
               {user?.guildName ? user.guildName : t('welcome.guild_title')}
             </h2>
             <p className="text-sm text-slate-500">
-              {user?.guildName 
-                ? `${t('welcome.guild_title')} • ${user.guildRank}` 
+              {user?.guildName
+                ? `${t('welcome.guild_title')} • ${user.guildRank}`
                 : t('welcome.guild_no_guild_desc')}
             </p>
           </button>
@@ -114,13 +122,13 @@ export default function WelcomeScreen({ onEnter }: Props) {
 
       {showGuildOptions && isLoggedIn && !user?.guildName && (
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl w-full animate-in fade-in slide-in-from-top-4 duration-300">
-          <button 
+          <button
             onClick={() => setCreateModalOpen(true)}
             className="flex items-center justify-center p-4 rounded-2xl border border-slate-800 bg-slate-900 text-white font-bold hover:border-emerald-500 transition-colors"
           >
             {t('welcome.guild_create')}
           </button>
-          <button 
+          <button
             onClick={() => setJoinModalOpen(true)}
             className="flex items-center justify-center p-4 rounded-2xl border border-slate-800 bg-slate-900 text-white font-bold hover:border-sky-500 transition-colors"
           >
@@ -129,27 +137,20 @@ export default function WelcomeScreen({ onEnter }: Props) {
         </div>
       )}
 
-      {showGuildOptions && isLoggedIn && user?.guildName && (
-        <div className="mt-8 p-6 rounded-3xl border border-slate-800 bg-slate-900/50 max-w-2xl w-full animate-in fade-in zoom-in-95 duration-300">
-          <p className="text-emerald-400 font-bold">
-            Bienvenue chez {user.guildName} !
-          </p>
-          <p className="text-xs text-slate-500 mt-1 italic">L'interface de gestion de guilde arrive bientôt.</p>
-        </div>
-      )}
+
 
       <footer className="mt-20 text-[10px] text-slate-700 font-mono uppercase tracking-widest">
         {t('welcome.footer')}
       </footer>
 
-      <AuthModal 
-        visible={authOpen} 
-        onClose={() => setAuthOpen(false)} 
+      <AuthModal
+        visible={authOpen}
+        onClose={() => setAuthOpen(false)}
         onLoginSuccess={checkLoginStatus}
       />
 
-      <JoinGuildModal 
-        visible={joinModalOpen} 
+      <JoinGuildModal
+        visible={joinModalOpen}
         onClose={() => {
           setJoinModalOpen(false);
         }}
@@ -159,7 +160,7 @@ export default function WelcomeScreen({ onEnter }: Props) {
         }}
       />
 
-      <CreateGuildModal 
+      <CreateGuildModal
         isOpen={createModalOpen}
         onClose={() => setCreateModalOpen(false)}
         onSuccess={() => {

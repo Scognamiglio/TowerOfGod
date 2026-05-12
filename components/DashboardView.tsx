@@ -2,6 +2,7 @@ import { useLanguage } from '@/context/LanguageContext';
 import { ResourceTotals, AllGains } from '@/types';
 import { calculateMaxLevel } from '@/services/calculateLinks'; 
 import { useState } from 'react';
+import HelperModal from './HelperModal';
 
 const multipliers = {
   unit: 1,
@@ -90,7 +91,11 @@ export default function DashboardView({
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-in fade-in duration-500">
+    <div className="animate-in fade-in duration-500">
+      <div className="flex justify-end mb-4">
+        <HelperModal />
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
       {resources.map((res) => {
         const valNeed = needs[res] || 0;
         const valAlready = already[res] || 0;
@@ -157,7 +162,7 @@ export default function DashboardView({
                 </div>
                 
                 <div className="text-[9px] text-slate-500 uppercase mt-1">
-                  Temps restant estimé
+                  {t('dashboard_view.estimated_time')}
                 </div>
               </div>
 
@@ -191,6 +196,7 @@ export default function DashboardView({
           </div>
         );
       })}
+      </div>
     </div>
   );
 }
